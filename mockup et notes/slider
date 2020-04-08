@@ -1,0 +1,174 @@
+mettre slider :
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dans un fichier slider.php (html) :
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<!--les photos-->
+<div id="slider">
+
+	<div class="sliderImg" id="img1" >
+		<img src="https://avante.biz/wp-content/uploads/T-ara-Wallpapers/T-ara-Wallpapers-037.jpg" alt="photo du slider" class="imgSlider">
+		<p class="pImg">1/4</p>
+	</div>
+
+	<div class="sliderImg" id="img2" ><!--pas touche!-->
+		<img src="https://ekladata.com/7PhRNaxrIRABjIuC2DuJ53Xr9qs.jpg" alt="photo du slider" class="imgSlider">
+		<p class="pImg">2/4</p>
+	</div>
+
+	<div class="sliderImg" id="img3" >
+		<img src="https://1.viki.io/carousel/UDXjQPAvpQ15SYWuLSvXpA_love_fantasy-carousel-1440x475.png?x=b&amp;s=1440x475&amp;q=h&amp;cb=1" class="imgSlider">
+		<p class="pImg">3/4</p>
+	</div>
+
+	<div class="sliderImg" id="img4" >
+		<img src="https://0.soompi.io/wp-content/uploads/2016/11/11013919/kill-me-heal-me-ji-sung-park-seo-joon.jpg?s=900x600&e=t" alt="photo du slider" class="imgSlider">
+		<p class="pImg">4/4</p>
+	</div>
+
+
+	<!--flèches-->
+	<button class="sliderBtn" id="chevronLeft"><i class="fas fa-chevron-left"></i></button>
+	<button class="sliderBtn" id="chevronRight"><i class="fas fa-chevron-right"></i></button>
+
+	<button class="sliderBtn" id="play"><i class="fas fa-play"></i></button>
+	<button class="sliderBtn" id="pause"><i class="fas fa-pause"></i></button>
+
+</div>
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dans un fichier style.css (css) :
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* SLIDER ========================================================= */
+
+#slider {
+	/*width: 700px;*/
+	height: 500px;
+	margin: auto;
+	display: flex;
+    align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.imgSlider {
+  width: 100%;
+}
+
+.sliderImg {
+	position: absolute;
+	width: 100%;
+	height: 500px;
+  overflow: hidden;
+}
+
+.pImg {
+  position: absolute;
+  bottom: 0px;
+  padding: 20px;
+  margin: 0px;
+  opacity:0.4;
+}
+
+.sliderBtn {
+    position: absolute;
+    background-color: #00000000;
+    border: none;
+    padding: 45px;
+  color: white;
+}
+
+#chevronLeft, #chevronRight{
+  z-index: 4;
+  font-size: 2.5em;
+  color: black;
+}
+
+#chevronLeft{
+  left : 0px;
+}
+#chevronRight{
+  right : 0px;
+}
+
+#pause, #play{
+  color: black;
+  font-size: 3em;
+  opacity: 0;
+}  
+
+#pause {
+  z-index: 4;
+}
+
+#play {
+  z-index: 3;
+}
+
+#pause:hover, #play:hover{
+  opacity:0.7;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dans index.php (js, instance objet, jQuery) :
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<!-- jQuery -->
+<script src="public/js/jquery-3.4.1.js"></script>
+<!--javascript links-->
+<!--slider-->
+<script src="public/js/Slider.js"></script>
+<script type="text/javascript">
+
+	//SLIDER
+var slides = document.getElementsByClassName("sliderImg");
+var slider = new Slider(slides);
+slider.change();
+
+
+//chevrons
+if ($("#chevronRight").click(function(){
+	slider.plusRight(slider.slides);
+	console.log("chevronRight Ok!");
+}));
+
+if ($("#chevronLeft").click(function(){
+	slider.plusLeft();
+	console.log("chevronLeft Ok!");
+
+}));
+
+//clavier
+document.addEventListener("keydown", function(event) {
+	if (event.which===39){
+		slider.plusRight(slider.slides);
+		console.log("FlècheLeft Ok!");
+	}
+
+	if (event.which===37){
+		slider.plusLeft();
+		console.log("FlècheRight Ok!");
+	}
+
+});
+
+//pause & play
+if ($("#play").click(function() { 
+	//console.log(play);
+	play.setAttribute("style", "z-index: 3");
+	slider.change();
+	console.log("Play Ok!");
+
+}));
+
+	if ($("#pause").click(function(){
+		slider.pause();
+		play.setAttribute("style", "z-index: 5");
+		console.log("Pause Ok!");
+	}));
+
+</script>

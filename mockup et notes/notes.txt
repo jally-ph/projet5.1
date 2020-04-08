@@ -1,0 +1,14 @@
+notes.txt
+
+
+HTML - structure
+CSS - design
+JS - Connexion à API Youtube
+	form vérification des saisis
+
+PHP - Zone de commentaire sous les vidéos
+
+SQL - Commentaires 
+		mots de passe
+		données de connexion utilisateur (nom, prén, @, mdp)
+
