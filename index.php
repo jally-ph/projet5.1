@@ -1,5 +1,6 @@
 <!--rassemble avec php les diff parties du site-->
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,8 +22,12 @@
 
 	<?php 
 	require_once("view/header.php"); 
-	require_once("view/slider.php");
+	require_once("view/cover.php");
+	require_once("view/mainVideo.php");
+	require_once("view/videos.php");
+	require_once("view/footer.php");
 	?>
+
 
 
 
@@ -32,58 +37,7 @@
 <!-- jQuery -->
 <script src="public/js/jquery-3.4.1.js"></script>
 <!--javascript links-->
-<!--slider-->
-<script src="public/js/Slider.js"></script>
-<script type="text/javascript">
 
-	//SLIDER
-var slides = document.getElementsByClassName("sliderImg");
-var slider = new Slider(slides);
-slider.change();
-
-
-//chevrons
-if ($("#chevronRight").click(function(){
-	slider.plusRight(slider.slides);
-	console.log("chevronRight Ok!");
-}));
-
-if ($("#chevronLeft").click(function(){
-	slider.plusLeft();
-	console.log("chevronLeft Ok!");
-
-}));
-
-//clavier
-document.addEventListener("keydown", function(event) {
-	if (event.which===39){
-		slider.plusRight(slider.slides);
-		console.log("FlècheLeft Ok!");
-	}
-
-	if (event.which===37){
-		slider.plusLeft();
-		console.log("FlècheRight Ok!");
-	}
-
-});
-
-//pause & play
-if ($("#play").click(function() { 
-	//console.log(play);
-	play.setAttribute("style", "z-index: 3");
-	slider.change();
-	console.log("Play Ok!");
-
-}));
-
-	if ($("#pause").click(function(){
-		slider.pause();
-		play.setAttribute("style", "z-index: 5");
-		console.log("Pause Ok!");
-	}));
-
-</script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/7e70710549.js"></script>
 <!--bootstrap-->
